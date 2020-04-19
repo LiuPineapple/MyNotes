@@ -1,4 +1,4 @@
-# 廖雪峰的Python教程-笔记
+# Python教程-笔记
 
 ## 3 Python基础
 
@@ -52,7 +52,11 @@ Out[2]: -1
 四 、命名关键字参数
 
 1. 函数定义中参数为位置必须是——必选参数、默认参数、可变参数、命名关键字参数和关键字参数
+
 2. 命名关键字参数必须传入参数名（区分与位置参数），也可以有默认值
+
+   如果没有默认值似乎是必须要传入（不确定）
+
 3. 必须用*或者可变关键字把位置参数和命名关键字参数分隔开，不然程序会无法区分
 
 五、
@@ -132,6 +136,18 @@ Object Oriented Programming 即面向对象编程
 
 https://www.cnblogs.com/rainbow-ran/p/12204859.html
 
+五、子类调用父类重名函数
+
+子类继承了父类的方法和属性，如果在子类中重写了父类中的函数，子类函数会覆盖父类函数，如果想要调用父类中的重名函数，有两种方法：
+
+https://www.bilibili.com/video/av70273365?p=302
+
+https://www.cnblogs.com/linshuhui/p/9016553.html
+
+https://cloud.tencent.com/developer/article/1486095
+
+注意：如果使用父类名.父类方法，self参数不能省略。如果使用super(本类名，self).或者super(). 那么不需要在方法里加self参数
+
 ### 8.4 获取对象信息
 
 一、isinstance
@@ -161,6 +177,50 @@ https://www.cnblogs.com/rainbow-ran/p/12204859.html
 
 3. 如果所有的except后面跟的错误类型都不是真正发生的错误类型则程序还是会报错
 4. else和finally区别很大。else和except只能执行其一，而finally只要有则总会执行
+
+## 11 IO编程
+
+### 11.1 文件读写
+
+一、Python中read()、readline()和readlines()三者间的区别和用法:https://www.cnblogs.com/yun1108/p/8967334.html
+
+### 11.5 补充：输入与输出
+
+一、输出：
+
+1. ```sys.stdout.write('hello')```
+
+   标准化的输出
+
+2. ```print('hello')```
+
+   print的使用见官方文档：https://docs.python.org/3.7/library/functions.html#print
+
+   默认的sep是空格' '，默认的end是'\n'，即输出后换行。print内部其实是在调用sys.stdout.write()
+
+   ```print('hello','world')```效果等同于```sys.stdout.write('hello'+' '+'world'+'\n')```
+
+二、输入：
+
+1. ```sys.stdin```
+
+   见如下博文https://www.cnblogs.com/ljxh/p/11189384.html
+
+   需要掌握的就是sys.stdin.readline()和for循环读取for line in sys.stdin:
+
+   前者类似于input()
+
+2. input()
+
+   https://docs.python.org/3.7/library/functions.html#input
+
+   input()可以展示提示信息，不过输入时一次只能输入一行，就算加换行符也会被当成普通字符。同时输入进来的内容全部会被转换成字符串
+
+3. 两者的相似与不同
+   - 两者都会将输入强制转换为字符串，两者输入时都不用加引号
+   - input()括号内可以以字符串的形式直接填写说明文字，sys.stdin还需要加个print方法给出提示信息
+   - sys.stdin.readline( )会将标准输入全部获取**，**包括末尾的'\n'，因此用len计算长度时是把换行符'\n'算进去了的，但是input( )获取输入时返回的结果是不包含末尾的换行符'\n'的。对于sys.stdin.readline( )可以采用.strip()方法去掉后面的换行符
+   - sys.stdin可以循环输入
 
 ## 13 正则表达式
 

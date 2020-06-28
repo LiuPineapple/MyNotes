@@ -127,3 +127,20 @@ eg:INSERT INTO students VALUES(DEFAULT,...,...),(),...
    - https://www.cnblogs.com/fps2tao/p/9041204.html
    - 
 
+3. 变量
+
+   https://www.cnblogs.com/Brambling/p/9259375.html
+
+   https://blog.csdn.net/zhou520yue520/article/details/81146469
+
+   https://www.cnblogs.com/aixinyiji/p/11033297.html
+
+# Hive SQL的使用
+
+1. 高级聚合
+
+   https://cwiki.apache.org/confluence/display/Hive/Enhanced+Aggregation%2C+Cube%2C+Grouping+and+Rollup
+
+2. 窗口函数
+
+   大数据分析之hive学习\第5节 HQL窗口函数

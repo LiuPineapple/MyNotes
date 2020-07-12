@@ -262,3 +262,27 @@ https://www.cnblogs.com/rainbow-ran/p/12204859.html
 
 2. 方括号[]表示范围，方括号括起来的表示一个要匹配的对象，只要满足方括号中的一个就算匹配上了
 
+## 14 常用内建模块
+
+### 14.12 random
+
+见python官方文档：
+
+https://docs.python.org/3.7/library/random.html?highlight=random#module-random
+
+需要掌握的有：
+
+random.seed() 选定随机数种子
+
+random.randint() 给定上下界，离散均匀分布取值，与np中不同的是它上下界都包括
+
+random.choice() 给定序列，随机从中取值
+
+random.random() [0,1)均匀分布，类似于np中的np.random.rand()
+
+random.uniform() 给定上下届均匀分布，类似于np中的np.random.uniform()，只不过上下界都包括
+
+random.gauss() 生成正态分布，需要给定均值和标准差
+
+random.randrange() 从生成的range中随机选一个，参数与range()相同
+

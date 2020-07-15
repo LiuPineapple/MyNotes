@@ -139,8 +139,49 @@ eg:INSERT INTO students VALUES(DEFAULT,...,...),(),...
 
 1. 高级聚合
 
-   https://cwiki.apache.org/confluence/display/Hive/Enhanced+Aggregation%2C+Cube%2C+Grouping+and+Rollup
+   - https://cwiki.apache.org/confluence/display/Hive/Enhanced+Aggregation%2C+Cube%2C+Grouping+and+Rollup
+   - 对于grouping(column)来说，如果对应列在这一行被聚合了（也就是为NULL）那么值就为1，否则为0。这里需要注意，一列值为NULL并不代表这一列被聚合了，也可能是这一列本身值为NULL，这里就体现出grouping和grouping__ID的作用了。
+   - 对于grouping__ID来说，把每一列的grouping结果拼在一起为一个二进制数然后转换成十进制
+   - grouping sets要跟group by一起使用，这时候group by用于声明字段，结果是去重并默认排序的相当于union。结果没有对所有项的聚合除非你加一个()
+   - rollup和cube都是默认有对所有列聚合的一行的
+   - rollup和cube两种用法，既可以放在group by后面，with rollup/cube，也可以group by colume,...,cube/rollup(column,...,column) 。如果第二种方法的cube和rollup前面没有列，那么就等同于第一种方法，如果前面有列，就相当于先按照前面的列聚合，在每一个分组中再按照cube或者rollup聚合
 
 2. 窗口函数
 
    大数据分析之hive学习\第5节 HQL窗口函数
+   
+3. 时间处理函数，需要记住的有
+
+   - DATE_ADD(),DATE_SUB(),DATEDIFF()
+
+      https://blog.csdn.net/qq_35958094/article/details/80460644
+
+     Hive中只有Date和timestamp两种时间类型，DATEDIFF()使用与Mysql相同，都是默认不考虑时钟值，DATE_ADD(),DATE_SUB()第二个参数没有INTERVAL关键字，只能跟天数。这里需要注意，Hive和Mysql中timestamp类型都是类似于Datetime格式的，而不是秒数。
+
+   - unix_timestamp() 在Hive中，这个函数有两个参数，但是在Mysql中，这个函数只有一个参数
+
+   - from_unixtime() 在Hive中和在Mysql中，这个函数有两个参数，第二个参数有默认值可以不写
+
+     https://blog.csdn.net/xienan_ds_zj/article/details/104482728
+
+4. 字符串处理函数，需要记住的有
+
+   - concat(),concat_ws(),group_concat()
+
+     https://www.cnblogs.com/wqbin/p/10266783.html
+
+     这三个函数和Mysql中的用法一样
+
+   - split()，产生一个array
+
+   - substr
+
+5. 
+
+6. 
+
+7. 
+
+   
+
+   

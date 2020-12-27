@@ -1,10 +1,20 @@
 # Java教程-笔记
 
-## 1 JAVA快速入门
+## 1 Java快速入门
 
-### 1.2 JAVA程序基础
+### 1.1 Java简介
 
-#### 1.2.1 JAVA程序基本结构
+#### 1.1.1 安装JDK
+
+1. 设置JAVA_HOME系统环境变量
+2. 在系统环境变量Path中添加%JAVA_HOME%\bin\
+3. 需要注意的是，现在安装JDK，安装程序会自动创建C:\Program Files\Common Files\Oracle\Java\javapath目录，并在里面存放一系列Java的exe程序，并把这一目录添加到Path最开头去（有的版本会把exe程序放到C:\Windows\System32中去，且C:\Windows\System32本就在Path环境变量中）。因此，我们在cmd命令行中运行java -version其实是调用这一目录下的exe而没有用到上述JAVA_HOME设置。如果想要用到上述JAVA_HOME设置，可以把%JAVA_HOME%\bin\移动到C:\Program Files\Common Files\Oracle\Java\javapath前面去。
+4. 如果安装两个JDK版本可以设置两个系统环境变量，比如一个为JAVA_HOME_15另一个为JAVA_HOME_1.8指向各自的安装目录，那么只要在Path中将%JAVA_HOME%\bin\移动到C:\Program Files\Common Files\Oracle\Java\javapath前面，并改变%JAVA_HOME%的值，即可以实现版本切换
+5. 上面第4条是在命令行中实现版本切换，如果要在ide比如eclipse中实现版本切换，只需要在Window-Preferences-Java-Installed JREs中添加并选择相应版本的jre，同时在Window-Preferences-Java-Compiler中将“Compiler compliance level”设置为相应版本号，即完成了对当前工作空间的版本切换。
+
+### 1.2 Java程序基础
+
+#### 1.2.1 Java程序基本结构
 
 1. 各种命名的强制规范都是英文字母开头，后接字母，数字和下划线的组合
 2. 类名建议规范为每个单词的首字母大写，遇到缩写要全大写。

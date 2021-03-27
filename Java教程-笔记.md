@@ -12,6 +12,14 @@
 4. 如果安装两个JDK版本可以设置两个系统环境变量，比如一个为JAVA_HOME_15另一个为JAVA_HOME_1.8指向各自的安装目录，那么只要在Path中将%JAVA_HOME%\bin\移动到C:\Program Files\Common Files\Oracle\Java\javapath前面，并改变%JAVA_HOME%的值，即可以实现版本切换
 5. 上面第4条是在命令行中实现版本切换，如果要在ide比如eclipse中实现版本切换，只需要在Window-Preferences-Java-Installed JREs中添加并选择相应版本的jre，同时在Window-Preferences-Java-Compiler中将“Compiler compliance level”设置为相应版本号，即完成了对当前工作空间的版本切换。
 
+#### 1.1.2 第一个Java程序
+
+1. 一个Java源码文件只能定义一个`public`类型的class，并且class名称和文件名要完全一致；https://www.cnblogs.com/lfri/p/10552111.html
+
+#### 1.1.4 使用IDE
+
+1. 不同的IDE对于编译后的字节码存在的目录是有不同命名的，比如eclipse是bin，intellij idea是out，如果使用maven就是target。之所以不同的IDE可以自由改动是因为最后打包成为JAR时，是将存放字节码的目录下的package打包，和这个目录名字无关。
+
 ### 1.2 Java程序基础
 
 #### 1.2.1 Java程序基本结构
@@ -21,8 +29,16 @@
 3. 方法名的建议规范时第一个单词全小写，剩下的单词首字母大写。遇到缩写要全大写。
 4. 包名的建议规范是全小写
 5. JAVA关键字/数据类型一般都是全小写
-6. Java入口程序规定的方法必须是静态方法，方法名必须为`main`，括号内的参数必须是String数组。
-7. Java的每一行语句必须以分号结束
+6. Java的每一行语句必须以分号结束
+7. Java程序的Main-class与main method:
+   - Java程序必须指定运行某个类，由这个类再去调用方法或者其他类。这个类称为Main-Class（我称之为启动类）。如果是运行一个Jar包的话，我们可以在Jar包的`/META-INF/MANIFEST.MF`文件指定启动类，这样在命令行运行的时候就不用指定了，Java会自动给读取`/META-INF/MANIFEST.MF`文件获取当前Jar包的Main-Class。
+   - 在Java的Main-class中，要有一个入口方法，即main方法。Java入口程序规定的方法必须是静态方法，方法名必须为`main`，括号内的参数必须是String数组。https://blog.csdn.net/weixin_42456439/article/details/106031454
+   - 无论是使用命令行还是IDE都可以指定main方法的参数，这些参数之间通常以空格分开。传递参数后以字符串数组的形式保存和调用。
+   - 非Main-class也可以有main方法，这时候应该就是一个普通的方法。程序入口只会是Main-class的main方法。
+8.  整个Java程序包（比如Jar包）的运行过程如下：
+   - JVM先在众多类中寻找事先指定的Main-class，找到后将其加载。JVM在执行Java程序的时候，并不是一次性把所有用到的class全部加载到内存，而是第一次需要用到class时才加载。因此必须指定Main-Class才行，JVM会先加载Main-Class。
+   - 调用Main-Class的static的main方法（因为只是加载了类，没有实例化，所以main方法必须是static的才能被调用）。并传入指定的参数。
+   - 根据main方法再去加载其他方法或者类。
 
 #### 1.2.2 变量和数据类型
 

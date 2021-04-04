@@ -70,6 +70,8 @@
 
    Java中基本类型和引用类型比较大小：https://blog.csdn.net/weixin_45271990/article/details/108940488
 
+   Java中判断对象是否为null，直接用==
+
 10. Java内存四区：
 
     https://blog.csdn.net/xiyangyang8110/article/details/72772801
@@ -77,6 +79,8 @@
     https://blog.csdn.net/u011148770/article/details/54293523
 
     Java无法主动释放堆区内存，只能靠垃圾回收机制自动回收，C++可以。
+    
+11. 一个String类型的变量赋值为空字符串和null的区别。我理解前者是真正在堆区创建了实例，可以调用实例变量和方法，只是内容为空，而后者只是在栈区创建了变量，并没有在堆区创建实例。https://www.cnblogs.com/qiuting/p/5373571.html
 
 #### 1.2.4 浮点数运算
 
